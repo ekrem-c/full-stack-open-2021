@@ -47,30 +47,18 @@ const History = (props) => {
 }
 
 const App = () => {
-  const [clicks, setClicks] = useState({
-    left: 0, right: 0
-  })
-  const [allClicks, setAll] = useState([])
-
-  const handleLeftClick = () => {
-    setClicks({...clicks, left: clicks.left + 1})
-    setAll(allClicks.concat('L'))
+  const [value, setValue] = useState(10)
+  
+  const setToValue = (newValue) => () => {
+    setValue(newValue)
   }
-
-  const handleRightClick = () => {
-    setClicks({ ...clicks, right: clicks.right + 1 })
-    setAll(allClicks.concat('R'))
-  }
-
-
+  
   return (
     <div>
-      {clicks.left}
-      <Button handleClick={handleLeftClick} text='left' />
-      <Button handleClick={handleRightClick} text='right'/>
-      {clicks.right}
-      <History allClicks={allClicks} />
-
+      {value}
+      <button onClick={setToValue(1000)}>thousand</button>
+      <button onClick={() => setValue(0)}>reset</button>
+      <button onClick={setToValue(value + 1)}>increment</button>
     </div>
   )
 }
