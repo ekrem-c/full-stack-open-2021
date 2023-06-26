@@ -1,9 +1,10 @@
 import React from 'react'
+import Course from './components/Course'
 
 //I left at unit 1.c
 
 
-const Header = ({course}) => {
+export const Header = ({course}) => {
   return (
     <>
       <h1>{course.name}</h1>
@@ -11,7 +12,7 @@ const Header = ({course}) => {
   )
 }
 
-const Part = ({name, exercise}) => {
+export const Part = ({name, exercise}) => {
   return (
     <>
       <p>{name} {exercise}</p>
@@ -19,17 +20,17 @@ const Part = ({name, exercise}) => {
   )
 }
 
-const Content = ({course}) => {
+export const Content = ({course}) => {
   return (
     <>
-      <Part name={course["parts"][0].name} exercise={course["parts"][0].exercises} />
-      <Part name={course["parts"][1].name} exercise={course["parts"][1].exercises} />
-      <Part name={course["parts"][2].name} exercise={course["parts"][2].exercises} />
+    {course["parts"].map(part =>
+      <Part key={part.id} name={part.name} exercise={part.exercises} />
+      )}
     </>
   )
 }
 
-const Total = ({course}) => {
+export const Total = ({course}) => {
   return (
     <>
       <p>Number of exercises {course["parts"][0].exercises + course["parts"][1].exercises + course["parts"][2].exercises}</p>
@@ -43,24 +44,25 @@ const App = () => {
     parts: [
       {
         name: "Fundamentals of React",
-        exercises: 10
+        exercises: 10,
+        id: 1
       },
       {
         name: "Using props to pass data",
-        exercises: 7
+        exercises: 7,
+        id: 2
       },
       {
         name: "State of a component",
-        exercises: 14
+        exercises: 14,
+        id: 3
       }
     ]
     
   }
   return (
     <div>
-      <Header course={course}/>
-      <Content course={course}/>
-      <Total course={course} />
+      <Course course={course}/>
     </div>
   )
 }
