@@ -33,10 +33,12 @@ export const Content = ({course}) => {
 export const Total = ({course}) => {
   return (
     <>
-      <p>Number of exercises {course["parts"][0].exercises + course["parts"][1].exercises + course["parts"][2].exercises}</p>
+      <b><p>Number of exercises {course["parts"].reduce((accumulator, part) => accumulator + part.exercises, 0)}</p></b>
     </>
   )
 }
+
+//{course["parts"][0].exercises + course["parts"][1].exercises + course["parts"][2].exercises}</p></b>
 
 const App = () => {
   const course = {
@@ -56,6 +58,11 @@ const App = () => {
         name: "State of a component",
         exercises: 14,
         id: 3
+      },
+      {
+        name: "Echo test",
+        exercises: 110,
+        id: 4
       }
     ]
     
