@@ -29,6 +29,16 @@
       "content": "a new note",
       "important": false,
       "id": 6
+    },
+    {
+      "content": "test",
+      "important": false,
+      "id": 7
+    },
+    {
+      "content": "yyyy",
+      "important": true,
+      "id": 8
     }
   ]
 }
